@@ -1,5 +1,6 @@
 package com.github.marc7806.locator;
 
+import com.github.marc7806.Version;
 import com.github.marc7806.exception.ExecutableLocatorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,15 +13,21 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import static com.github.marc7806.Version.getVersion;
-
+/**
+ * Locator class for BBC-Audiowaveform
+ * Locates the bbc-audiowaveform executable and saves the executable path
+ */
 public class AWFLocator implements ExecutableLocator {
     private static final Logger log = LoggerFactory.getLogger(AWFLocator.class);
-    private static final String TMP_BASE_DIR = "bbc-audiowaveform-java/" + getVersion() + "/";
-    private static final String RESOURCES_BASE_DIR = "bbc-audiowaveform/" + getVersion() + "/";
-    private static String _executablePath;
 
-    public AWFLocator() {
+    private final Version _version;
+    private final String _executablePath;
+    private String _tempBaseDir;
+    private String _resourcesBaseDir;
+
+    public AWFLocator(Version version) {
+        _version = version;
+        buildDirectoryPaths();
         File baseDir = initializeTempDir();
         String execName = determineExecutableName();
         File execFile = new File(baseDir, execName);
@@ -30,7 +37,7 @@ public class AWFLocator implements ExecutableLocator {
                 log.debug("Executable exists in '{}'", execFile.getAbsolutePath());
             } else {
                 log.debug("Copy executable to '{}'", execFile.getAbsolutePath());
-                copyFile(RESOURCES_BASE_DIR + execName, execFile);
+                copyFile(_resourcesBaseDir + execName, execFile);
             }
         } catch (ExecutableLocatorException e) {
             log.error("Error trying to locate bbc-audiowaveform executable", e);
@@ -38,6 +45,11 @@ public class AWFLocator implements ExecutableLocator {
         }
         setExecutablePermission(execFile);
         _executablePath = execFile.getAbsolutePath();
+    }
+
+    private void buildDirectoryPaths() {
+        _tempBaseDir = "bbc-audiowaveform-java/" + _version.getVersion() + "/";
+        _resourcesBaseDir = "bbc-audiowaveform/" + _version.getVersion() + "/";
     }
 
     private void setExecutablePermission(File execFile) {
@@ -73,7 +85,7 @@ public class AWFLocator implements ExecutableLocator {
     }
 
     private File initializeTempDir() {
-        File dirFolder = new File(System.getProperty("java.io.tmpdir"), TMP_BASE_DIR);
+        File dirFolder = new File(System.getProperty("java.io.tmpdir"), _tempBaseDir);
         if (dirFolder.exists()) {
             log.debug("bbc-audiowaveform temp folder already exists in '{}'", dirFolder.getAbsolutePath());
         } else {

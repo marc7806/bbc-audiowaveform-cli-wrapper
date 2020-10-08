@@ -8,12 +8,24 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 class AWFLocatorTest {
     @Test
+    public void shouldThrowExceptionWhenExecutableNotAvailable() {
+        //given
+        Version version = Mockito.mock(Version.class);
+        when(version.getVersion()).thenReturn("0.0.1");
+
+        //then
+        assertThrows(RuntimeException.class, () -> new AWFLocator(version));
+    }
+
+    @Test
     public void shouldGetExecutablePath() {
         //given
-        ExecutableLocator locator = new AWFLocator();
+        Version version = new Version();
+        ExecutableLocator locator = new AWFLocator(version);
 
         //when
         String execPath = locator.getExecutablePath();
@@ -21,15 +33,5 @@ class AWFLocatorTest {
         //then
         assertNotNull(execPath);
         assertThat(execPath, containsString("audiowaveform"));
-    }
-
-    @Test
-    public void shouldThrowExceptionWhenExecutableNotAvailable() {
-        //given
-        Mockito.mockStatic(Version.class);
-        Mockito.when(Version.getVersion()).thenReturn("0.0.1");
-
-        //then
-        assertThrows(RuntimeException.class, AWFLocator::new);
     }
 }
