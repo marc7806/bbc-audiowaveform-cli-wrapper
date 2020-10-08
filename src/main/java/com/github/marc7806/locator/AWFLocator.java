@@ -14,13 +14,13 @@ import java.nio.file.StandardCopyOption;
 
 import static com.github.marc7806.Version.getVersion;
 
-public class BBCAudioWaveFormLocator implements ExecutableLocator {
-    private static final Logger log = LoggerFactory.getLogger(BBCAudioWaveFormLocator.class);
+public class AWFLocator implements ExecutableLocator {
+    private static final Logger log = LoggerFactory.getLogger(AWFLocator.class);
     private static final String TMP_BASE_DIR = "bbc-audiowaveform-java/" + getVersion() + "/";
     private static final String RESOURCES_BASE_DIR = "bbc-audiowaveform/" + getVersion() + "/";
     private static String _executablePath;
 
-    public BBCAudioWaveFormLocator() {
+    public AWFLocator() {
         File baseDir = initializeTempDir();
         String execName = determineExecutableName();
         File execFile = new File(baseDir, execName);

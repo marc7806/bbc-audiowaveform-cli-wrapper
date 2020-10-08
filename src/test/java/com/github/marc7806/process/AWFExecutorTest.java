@@ -1,6 +1,5 @@
-package com.github.marc7806.locator;
+package com.github.marc7806.process;
 
-import com.github.marc7806.process.BBCAudioWaveFormExecutor;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -13,11 +12,11 @@ import static com.github.marc7806.Version.getVersion;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class BBCAudioWaveFormExecutorTest {
+class AWFExecutorTest {
     @Test
     public void shouldExecuteVersionCheck() throws IOException {
         //given
-        BBCAudioWaveFormExecutor executor = new BBCAudioWaveFormExecutor();
+        AWFExecutor executor = new AWFExecutor();
 
         //when
         List<String> args = new ArrayList<>();

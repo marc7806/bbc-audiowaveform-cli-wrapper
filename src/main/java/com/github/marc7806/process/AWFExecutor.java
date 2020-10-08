@@ -1,6 +1,6 @@
 package com.github.marc7806.process;
 
-import com.github.marc7806.locator.BBCAudioWaveFormLocator;
+import com.github.marc7806.locator.AWFLocator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,14 +11,14 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class BBCAudioWaveFormExecutor implements ProcessExecutor {
-    private static final Logger log = LoggerFactory.getLogger(BBCAudioWaveFormExecutor.class);
-    private final BBCAudioWaveFormLocator _audioWaveFormLocator;
+public class AWFExecutor implements ProcessExecutor {
+    private static final Logger log = LoggerFactory.getLogger(AWFExecutor.class);
+    private final AWFLocator _audioWaveFormLocator;
     private File _workingDir;
     private boolean _redirectErrorStream = false;
 
-    public BBCAudioWaveFormExecutor() {
-        _audioWaveFormLocator = new BBCAudioWaveFormLocator();
+    public AWFExecutor() {
+        _audioWaveFormLocator = new AWFLocator();
     }
 
     @Override
@@ -38,12 +38,12 @@ public class BBCAudioWaveFormExecutor implements ProcessExecutor {
         return processBuilder.start();
     }
 
-    public BBCAudioWaveFormExecutor setWorkingDirectory(File workingDir) {
+    public AWFExecutor setWorkingDirectory(File workingDir) {
         _workingDir = workingDir;
         return this;
     }
 
-    public BBCAudioWaveFormExecutor redirectErrorStream(boolean redirectErrorStream) {
+    public AWFExecutor redirectErrorStream(boolean redirectErrorStream) {
         _redirectErrorStream = redirectErrorStream;
         return this;
     }

@@ -9,11 +9,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class BBCAudioWaveFormLocatorTest {
+class AWFLocatorTest {
     @Test
     public void shouldGetExecutablePath() {
         //given
-        ExecutableLocator locator = new BBCAudioWaveFormLocator();
+        ExecutableLocator locator = new AWFLocator();
 
         //when
         String execPath = locator.getExecutablePath();
@@ -30,6 +30,6 @@ class BBCAudioWaveFormLocatorTest {
         Mockito.when(Version.getVersion()).thenReturn("0.0.1");
 
         //then
-        assertThrows(RuntimeException.class, BBCAudioWaveFormLocator::new);
+        assertThrows(RuntimeException.class, AWFLocator::new);
     }
 }
