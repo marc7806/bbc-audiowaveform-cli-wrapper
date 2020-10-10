@@ -20,8 +20,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/marc7806/bbc-audiowaveform-cli-wrapper</url>
-        <connection>scm:git:git@github.com/marc7806/bbc-audiowaveform-cli-wrapper.git</connection>
+        <connection>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</connection>
+        <url>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</url>
+        <developerConnection>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</developerConnection>
     </scm>
 
     <developers>
