@@ -5,7 +5,7 @@
 
     <groupId>com.github.marc7806</groupId>
     <artifactId>audiowaveform</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <name>bbc-audiowaveform java wrapper</name>
     <description>Simple Java wrapper around bbc-audiowaveform command-line interface</description>
@@ -27,7 +27,7 @@
         <connection>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</connection>
         <url>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</url>
         <developerConnection>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</developerConnection>
-      <tag>audiowaveform-1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
