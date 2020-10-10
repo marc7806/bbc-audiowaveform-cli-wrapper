@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.marc7806</groupId>
     <artifactId>audiowaveform</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <name>bbc-audiowaveform java wrapper</name>
     <description>Simple Java wrapper around bbc-audiowaveform command-line interface</description>
@@ -28,7 +27,8 @@
         <connection>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</connection>
         <url>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</url>
         <developerConnection>scm:git:git@github.com:marc7806/bbc-audiowaveform-cli-wrapper.git</developerConnection>
-    </scm>
+      <tag>audiowaveform-1.0</tag>
+  </scm>
 
     <developers>
         <developer>
