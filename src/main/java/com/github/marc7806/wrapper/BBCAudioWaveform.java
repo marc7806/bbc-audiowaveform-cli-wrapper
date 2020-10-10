@@ -1,20 +1,29 @@
 package com.github.marc7806.wrapper;
 
-import com.github.marc7806.process.AWFExecutor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.github.marc7806.process.AWFExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Wrapper for BBCAudioWaveform cli tool
+ *
+ * @author Marc7806
+ * @version 1.0
+ */
 public class BBCAudioWaveform {
     private static final Logger log = LoggerFactory.getLogger(BBCAudioWaveform.class);
 
     private final AWFExecutor _executor;
 
     /**
-     * @param executablePath of bbc-audiowaveform binary
+     * Constructor that takes binary path
+     *
+     * @param pathToBinary
+     *         Path to bbc-audiowaveform executable
      */
     public BBCAudioWaveform(String pathToBinary) {
         _executor = new AWFExecutor(pathToBinary)
@@ -22,7 +31,7 @@ public class BBCAudioWaveform {
     }
 
     /**
-     * reads executable path from system property
+     * Reads executable path from system property
      */
     public BBCAudioWaveform() {
         _executor = new AWFExecutor()
@@ -32,7 +41,8 @@ public class BBCAudioWaveform {
     /**
      * Runs a new bbc-audiowaveform process for a given command
      *
-     * @param command The command that contains the arguments for running bbc-audiowaveform process
+     * @param command
+     *         The command that contains the arguments for running bbc-audiowaveform process
      * @return boolean that indicates process success. True if successfully run, otherwise false.
      */
     public boolean run(AWFCommand command) {

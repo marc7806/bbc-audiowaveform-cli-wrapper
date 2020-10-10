@@ -1,18 +1,17 @@
 package com.github.marc7806.locator;
 
-import com.github.marc7806.Environment;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
-import java.io.File;
-import java.io.IOException;
-
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
+import java.io.File;
+import java.io.IOException;
+
+import com.github.marc7806.Environment;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class AWFLocatorTest {
     @Test

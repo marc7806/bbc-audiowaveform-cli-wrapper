@@ -1,17 +1,19 @@
 package com.github.marc7806.locator;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import com.github.marc7806.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
 /**
  * Locator class for BBC-Audiowaveform
  * Locates the bbc-audiowaveform executable and saves the executable path
+ *
+ * @author Marc7806
+ * @version 1.0
  */
 public class AWFLocator implements ExecutableLocator {
     private static final Logger log = LoggerFactory.getLogger(AWFLocator.class);
@@ -21,7 +23,8 @@ public class AWFLocator implements ExecutableLocator {
     /**
      * Creates AWFLocator with bbc-audiowaveform binary file at specified location
      *
-     * @param binaryPath Path of bbc-audiowaveform binary file
+     * @param binaryPath
+     *         Path of bbc-audiowaveform binary file
      */
     public AWFLocator(String binaryPath) {
         File executable = new File(binaryPath);
@@ -32,6 +35,9 @@ public class AWFLocator implements ExecutableLocator {
 
     /**
      * Creates AWFLocator with bbc-audiowaveform binary file path from AWF_PATH environment variable
+     *
+     * @param env
+     *         a {@link Environment} object.
      */
     public AWFLocator(Environment env) {
         final File executable;

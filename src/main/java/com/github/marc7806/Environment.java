@@ -1,12 +1,15 @@
 package com.github.marc7806;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * Class that return environment variables
+ *
+ * @author Marc7806
+ * @version 1.0
  */
 public class Environment {
     private static final Logger log = LoggerFactory.getLogger(Environment.class);

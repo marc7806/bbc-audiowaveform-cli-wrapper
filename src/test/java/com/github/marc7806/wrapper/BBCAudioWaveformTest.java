@@ -1,14 +1,13 @@
 package com.github.marc7806.wrapper;
 
-import com.google.common.io.Files;
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.io.IOException;
-
 import static com.google.common.hash.Hashing.sha256;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.io.File;
+import java.io.IOException;
+
+import com.google.common.io.Files;
+import org.junit.jupiter.api.Test;
 
 class BBCAudioWaveformTest {
     @Test

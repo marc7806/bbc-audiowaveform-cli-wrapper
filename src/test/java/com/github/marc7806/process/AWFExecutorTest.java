@@ -1,10 +1,9 @@
 package com.github.marc7806.process;
 
-import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 class AWFExecutorTest {
     @Test

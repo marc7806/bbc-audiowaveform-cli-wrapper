@@ -4,6 +4,9 @@ import java.util.List;
 
 /**
  * Interface for a command that defines arguments for command line executor
+ *
+ * @author Marc7806
+ * @version 1.0
  */
 public interface Command {
     /**

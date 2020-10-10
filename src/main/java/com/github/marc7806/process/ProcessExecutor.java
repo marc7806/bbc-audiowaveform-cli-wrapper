@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * Defines a interface for process executor
+ *
+ * @author Marc7806
+ * @version 1.0
  */
 public interface ProcessExecutor {
     Process execute(List<String> args) throws IOException;

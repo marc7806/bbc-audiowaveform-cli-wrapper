@@ -1,12 +1,11 @@
 package com.github.marc7806.wrapper;
 
-import com.google.common.collect.ImmutableList;
-
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.File;
 import java.util.List;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.collect.ImmutableList;
 
 /**
  * Command that contains arguments for bbc-audiowaveform execution
@@ -20,6 +19,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  *      .setBits(AWFBit.SIXTEEN)
  *      .build();</code>
  * </pre>
+ *
+ * @author Marc7806
+ * @version 1.0
  */
 public class AWFCommand implements Command {
     private ImmutableList.Builder<String> _args = new ImmutableList.Builder<>();
@@ -42,6 +44,9 @@ public class AWFCommand implements Command {
         return _args.build();
     }
 
+    /**
+     * @return a {@link AWFCommandBuilder} object.
+     */
     public static AWFCommandBuilder builder() {
         return new AWFCommandBuilder();
     }
@@ -53,6 +58,10 @@ public class AWFCommand implements Command {
         /**
          * Input filename, which should be a MP3, WAV, FLAC, or Ogg Vorbis audio file, or a binary waveform data file
          * By default, audiowaveform uses the file extension to decide how to read the input file
+         *
+         * @param input
+         *         Input file
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setInput(File input) {
             _awfCommand._input = checkNotNull(input);
@@ -63,6 +72,10 @@ public class AWFCommand implements Command {
         /**
          * Output filename, which may be either a WAV audio file, a binary or JSON format waveform data file, or a PNG image file
          * By default, audiowaveform uses the file extension to decide the kind of output to generate
+         *
+         * @param output
+         *         Output file
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setOutput(File output) {
             _awfCommand._output = checkNotNull(output);
@@ -72,6 +85,10 @@ public class AWFCommand implements Command {
 
         /**
          * Specifies the number of input samples to use to generate each output waveform data point
+         *
+         * @param zoom
+         *         Number of input samples
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder addZoom(int zoom) {
             _awfCommand._zoom = zoom;
@@ -81,6 +98,10 @@ public class AWFCommand implements Command {
 
         /**
          * Specifies the number of data bits to use for output waveform data points
+         *
+         * @param bits
+         *         Number of bits
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setBits(AWFBit bits) {
             _awfCommand._bits = bits;
@@ -90,6 +111,8 @@ public class AWFCommand implements Command {
 
         /**
          * Output files are multi-channel, not combined into a single waveform
+         *
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder splitChannels() {
             _awfCommand._splitChannels = true;
@@ -99,6 +122,10 @@ public class AWFCommand implements Command {
 
         /**
          * When creating a waveform image, specifies the start time, in seconds
+         *
+         * @param start
+         *         Start time in seconds
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setStart(int start) {
             _awfCommand._start = start;
@@ -108,6 +135,10 @@ public class AWFCommand implements Command {
 
         /**
          * When creating a waveform image, specifies the image width
+         *
+         * @param width
+         *         Image width
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setWidth(int width) {
             _awfCommand._width = width;
@@ -117,6 +148,10 @@ public class AWFCommand implements Command {
 
         /**
          * When creating a waveform image, specifies the image height
+         *
+         * @param height
+         *         Image height
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setHeight(int height) {
             _awfCommand._height = height;
@@ -126,6 +161,10 @@ public class AWFCommand implements Command {
 
         /**
          * When creating a waveform image, specifies the color scheme to use
+         *
+         * @param colorSchema
+         *         Image color schema
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setColorSchema(AWFColorSchema colorSchema) {
             _awfCommand._colorSchema = colorSchema;
@@ -135,6 +174,8 @@ public class AWFCommand implements Command {
 
         /**
          * When creating a waveform image, specifies whether to hide axis labels
+         *
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder hideAxisLabels() {
             _awfCommand._hideAxisLabels = true;
@@ -145,6 +186,10 @@ public class AWFCommand implements Command {
         /**
          * When creating a waveform image or waveform data file, specifies an amplitude scaling (or vertical zoom) to apply to the waveform
          * Must be either a number or 'auto', which scales the waveform to the maximum height
+         *
+         * @param amplitudeScale
+         *         Amplitude scaling to apply to waveform
+         * @return AWFCommandBuilder
          */
         public AWFCommandBuilder setAmplitudeScale(String amplitudeScale) {
             checkArgument(!amplitudeScale.isEmpty(), "Amplitude scale value can not be empty");
