@@ -8,12 +8,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BBCAudioWaveForm {
-    private static final Logger log = LoggerFactory.getLogger(BBCAudioWaveForm.class);
+public class BBCAudioWaveform {
+    private static final Logger log = LoggerFactory.getLogger(BBCAudioWaveform.class);
 
     private final AWFExecutor _executor;
 
-    public BBCAudioWaveForm() {
+    /**
+     * @param executablePath of bbc-audiowaveform binary
+     */
+    public BBCAudioWaveform(String pathToBinary) {
+        _executor = new AWFExecutor(pathToBinary)
+                .redirectErrorStream(true);
+    }
+
+    /**
+     * reads executable path from system property
+     */
+    public BBCAudioWaveform() {
         _executor = new AWFExecutor()
                 .redirectErrorStream(true);
     }

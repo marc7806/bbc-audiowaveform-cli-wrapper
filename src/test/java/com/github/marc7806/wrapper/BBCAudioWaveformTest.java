@@ -10,14 +10,14 @@ import static com.google.common.hash.Hashing.sha256;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class BBCAudioWaveFormTest {
+class BBCAudioWaveformTest {
     @Test
     public void shouldSuccessfullyRunJSON_B_8_Sample() throws IOException {
         //given
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
         output.deleteOnExit();
-        BBCAudioWaveForm bbcAudioWaveForm = new BBCAudioWaveForm();
+        BBCAudioWaveform bbcAudioWaveform = new BBCAudioWaveform();
         AWFCommand command = AWFCommand.builder()
                 .setInput(input)
                 .setOutput(output)
@@ -25,7 +25,7 @@ class BBCAudioWaveFormTest {
                 .build();
 
         //when
-        boolean success = bbcAudioWaveForm.run(command);
+        boolean success = bbcAudioWaveform.run(command);
 
         //then
         File expected = new File(getClass().getClassLoader().getResource("json/sample_01_B_8.json").getFile());
@@ -39,7 +39,7 @@ class BBCAudioWaveFormTest {
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
         output.deleteOnExit();
-        BBCAudioWaveForm bbcAudioWaveForm = new BBCAudioWaveForm();
+        BBCAudioWaveform bbcAudioWaveform = new BBCAudioWaveform();
         AWFCommand command = AWFCommand.builder()
                 .setInput(input)
                 .setOutput(output)
@@ -48,7 +48,7 @@ class BBCAudioWaveFormTest {
                 .build();
 
         //when
-        boolean success = bbcAudioWaveForm.run(command);
+        boolean success = bbcAudioWaveform.run(command);
 
         //then
         File expected = new File(getClass().getClassLoader().getResource("json/sample_01_B_8_Z_2048.json").getFile());
@@ -62,7 +62,7 @@ class BBCAudioWaveFormTest {
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
         output.deleteOnExit();
-        BBCAudioWaveForm bbcAudioWaveForm = new BBCAudioWaveForm();
+        BBCAudioWaveform bbcAudioWaveform = new BBCAudioWaveform();
         AWFCommand command = AWFCommand.builder()
                 .setInput(input)
                 .setOutput(output)
@@ -70,7 +70,7 @@ class BBCAudioWaveFormTest {
                 .build();
 
         //when
-        boolean success = bbcAudioWaveForm.run(command);
+        boolean success = bbcAudioWaveform.run(command);
 
         //then
         File expected = new File(getClass().getClassLoader().getResource("json/sample_01_B_16.json").getFile());
@@ -84,7 +84,7 @@ class BBCAudioWaveFormTest {
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
         output.deleteOnExit();
-        BBCAudioWaveForm bbcAudioWaveForm = new BBCAudioWaveForm();
+        BBCAudioWaveform bbcAudioWaveform = new BBCAudioWaveform();
         AWFCommand command = AWFCommand.builder()
                 .setInput(input)
                 .setOutput(output)
@@ -93,7 +93,7 @@ class BBCAudioWaveFormTest {
                 .build();
 
         //when
-        boolean success = bbcAudioWaveForm.run(command);
+        boolean success = bbcAudioWaveform.run(command);
 
         //then
         File expected = new File(getClass().getClassLoader().getResource("json/sample_01_B_16_Z_2048.json").getFile());
@@ -107,7 +107,7 @@ class BBCAudioWaveFormTest {
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".png");
         output.deleteOnExit();
-        BBCAudioWaveForm bbcAudioWaveForm = new BBCAudioWaveForm();
+        BBCAudioWaveform bbcAudioWaveform = new BBCAudioWaveform();
         AWFCommand command = AWFCommand.builder()
                 .setInput(input)
                 .setOutput(output)
@@ -119,7 +119,7 @@ class BBCAudioWaveFormTest {
                 .build();
 
         //when
-        boolean success = bbcAudioWaveForm.run(command);
+        boolean success = bbcAudioWaveform.run(command);
 
         //then
         File expected = new File(getClass().getClassLoader().getResource("image/sample_01_SPLIT_W_1920_H_1080_AUTO_AUDITION.png").getFile());
