@@ -67,6 +67,7 @@ public class BBCAudioWaveform {
             log.error("Error executing AWFCommand", e);
         } catch (InterruptedException e) {
             log.warn("AWF Process execution interrupted either before or during the activity", e);
+            Thread.currentThread().interrupt();
         }
         return false;
     }
