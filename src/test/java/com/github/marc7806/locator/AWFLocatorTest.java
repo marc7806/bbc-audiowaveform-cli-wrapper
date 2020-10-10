@@ -15,14 +15,14 @@ import org.mockito.Mockito;
 
 class AWFLocatorTest {
     @Test
-    public void shouldThrowExceptionWhenExecutableNotAvailable() {
+    void shouldThrowExceptionWhenExecutableNotAvailable() {
         assertThrows(RuntimeException.class, () -> {
             new AWFLocator("/demo/test");
         });
     }
 
     @Test
-    public void shouldGetAWFLocatorWithValidBinaryPath() throws IOException {
+    void shouldGetAWFLocatorWithValidBinaryPath() throws IOException {
         File tmpBinary = File.createTempFile("audiowaveform", "");
         tmpBinary.deleteOnExit();
         AWFLocator locator = new AWFLocator(tmpBinary.getAbsolutePath());
@@ -30,7 +30,7 @@ class AWFLocatorTest {
     }
 
     @Test
-    public void shouldGetExecutablePathWithAWFEnvironment() throws IOException {
+    void shouldGetExecutablePathWithAWFEnvironment() throws IOException {
         //given
         File tmpBinary = File.createTempFile("audiowaveform", "");
         tmpBinary.deleteOnExit();
@@ -48,7 +48,7 @@ class AWFLocatorTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenNoValidEnvironmentPath() {
+    void shouldThrowExceptionWhenNoValidEnvironmentPath() {
         //given
         Environment env = Mockito.mock(Environment.class);
         when(env.getAwfPath()).thenReturn("/demo/test");

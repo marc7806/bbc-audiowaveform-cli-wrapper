@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class AWFCommandTest {
     @Test
-    public void shouldBuildCommandWithInputAndOutput() {
+    void shouldBuildCommandWithInputAndOutput() {
         //given
         File input = new File("awf-example-input.mp3");
         File output = new File("awf-example-ouput.json");
@@ -26,7 +26,7 @@ class AWFCommandTest {
     }
 
     @Test
-    public void shouldBuildFullCommand() {
+    void shouldBuildFullCommand() {
         //given
         File input = new File("awf-example-input.mp3");
         File output = new File("awf-example-ouput.json");
@@ -47,25 +47,21 @@ class AWFCommandTest {
                 .build();
 
         //then
-        assertEquals(command.getArguments().size(), 20);
+        assertEquals(20, command.getArguments().size());
     }
 
     @Test
-    public void shouldThrowNullPointerExceptionIfInputFileEmpty() {
-        assertThrows(NullPointerException.class, () -> {
-            AWFCommand command = AWFCommand.builder()
-                    .build();
-            command.getArguments();
-        });
+    void shouldThrowNullPointerExceptionIfInputFileEmpty() {
+        AWFCommand command = AWFCommand.builder()
+                .build();
+        assertThrows(NullPointerException.class, command::getArguments);
     }
 
     @Test
-    public void shouldThrowNullPointerExceptionIfOutputFileEmpty() {
-        assertThrows(NullPointerException.class, () -> {
-            AWFCommand command = AWFCommand.builder()
-                    .setInput(new File("awf-example-output.json"))
-                    .build();
-            command.getArguments();
-        });
+    void shouldThrowNullPointerExceptionIfOutputFileEmpty() {
+        AWFCommand command = AWFCommand.builder()
+                .setInput(new File("awf-example-output.json"))
+                .build();
+        assertThrows(NullPointerException.class, command::getArguments);
     }
 }

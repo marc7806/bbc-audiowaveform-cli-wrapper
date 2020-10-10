@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class AWFExecutorTest {
     @Test
-    public void shouldExecuteVersionCheck() throws IOException {
+    void shouldExecuteVersionCheck() throws IOException {
         //given
         AWFExecutor executor = new AWFExecutor();
 

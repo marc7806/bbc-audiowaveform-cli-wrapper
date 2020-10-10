@@ -26,9 +26,9 @@ import org.slf4j.LoggerFactory;
 public class AWFExecutor implements ProcessExecutor {
     private static final Logger log = LoggerFactory.getLogger(AWFExecutor.class);
 
-    private final AWFLocator _audioWaveformLocator;
-    private File _workingDir;
-    private boolean _redirectErrorStream = false;
+    private final AWFLocator audioWaveformLocator;
+    private File workingDir;
+    private boolean redirectErrorStream = false;
 
     /**
      * Creates AWFExecutor for provided binary
@@ -37,11 +37,11 @@ public class AWFExecutor implements ProcessExecutor {
      *         Path of bbc-audiowaveform binary
      */
     public AWFExecutor(String executablePath) {
-        _audioWaveformLocator = new AWFLocator(executablePath);
+        this.audioWaveformLocator = new AWFLocator(executablePath);
     }
 
     public AWFExecutor() {
-        _audioWaveformLocator = new AWFLocator(new Environment());
+        this.audioWaveformLocator = new AWFLocator(new Environment());
     }
 
     @Override
@@ -50,14 +50,14 @@ public class AWFExecutor implements ProcessExecutor {
         checkArgument(!args.isEmpty(), "Arguments are empty");
 
         ImmutableList<String> execArgs = new ImmutableList.Builder<String>()
-                .add(_audioWaveformLocator.getExecutablePath())
+                .add(this.audioWaveformLocator.getExecutablePath())
                 .addAll(args)
                 .build();
         ProcessBuilder processBuilder = new ProcessBuilder(execArgs);
-        processBuilder.redirectErrorStream(_redirectErrorStream);
+        processBuilder.redirectErrorStream(this.redirectErrorStream);
 
-        if (_workingDir != null) {
-            processBuilder.directory(_workingDir);
+        if (this.workingDir != null) {
+            processBuilder.directory(this.workingDir);
         }
 
         log.info("About to execute: {}", String.join(" ", processBuilder.command()));
@@ -75,12 +75,12 @@ public class AWFExecutor implements ProcessExecutor {
     }
 
     public AWFExecutor setWorkingDirectory(File workingDir) {
-        _workingDir = workingDir;
+        this.workingDir = workingDir;
         return this;
     }
 
     public AWFExecutor redirectErrorStream(boolean redirectErrorStream) {
-        _redirectErrorStream = redirectErrorStream;
+        this.redirectErrorStream = redirectErrorStream;
         return this;
     }
 }

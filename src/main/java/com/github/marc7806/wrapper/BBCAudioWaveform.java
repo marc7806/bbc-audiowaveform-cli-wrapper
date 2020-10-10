@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 public class BBCAudioWaveform {
     private static final Logger log = LoggerFactory.getLogger(BBCAudioWaveform.class);
 
-    private final AWFExecutor _executor;
+    private final AWFExecutor executor;
 
     /**
      * Constructor that takes binary path
@@ -26,7 +26,7 @@ public class BBCAudioWaveform {
      *         Path to bbc-audiowaveform executable
      */
     public BBCAudioWaveform(String pathToBinary) {
-        _executor = new AWFExecutor(pathToBinary)
+        this.executor = new AWFExecutor(pathToBinary)
                 .redirectErrorStream(true);
     }
 
@@ -34,7 +34,7 @@ public class BBCAudioWaveform {
      * Reads executable path from system property
      */
     public BBCAudioWaveform() {
-        _executor = new AWFExecutor()
+        this.executor = new AWFExecutor()
                 .redirectErrorStream(true);
     }
 
@@ -48,7 +48,7 @@ public class BBCAudioWaveform {
     public boolean run(AWFCommand command) {
         log.info("Start executing bbc-audiowaveform command");
         try {
-            final Process process = _executor.execute(command.getArguments());
+            final Process process = this.executor.execute(command.getArguments());
             int exitCode = process.waitFor();
 
             // read and log process output

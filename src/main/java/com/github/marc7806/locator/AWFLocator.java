@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import com.github.marc7806.Environment;
+import com.github.marc7806.exception.ExecutableLocatorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,7 @@ import org.slf4j.LoggerFactory;
 public class AWFLocator implements ExecutableLocator {
     private static final Logger log = LoggerFactory.getLogger(AWFLocator.class);
 
-    private final String _executablePath;
+    private final String executablePath;
 
     /**
      * Creates AWFLocator with bbc-audiowaveform binary file at specified location
@@ -30,7 +31,7 @@ public class AWFLocator implements ExecutableLocator {
         File executable = new File(binaryPath);
         checkArgument(executable.exists(), "Provided file with path '" + binaryPath + "' does not exist");
         setExecutablePermission(executable);
-        _executablePath = binaryPath;
+        this.executablePath = binaryPath;
     }
 
     /**
@@ -51,11 +52,11 @@ public class AWFLocator implements ExecutableLocator {
             }
         } catch (Exception e) {
             log.error("Error trying to locate bbc-audiowaveform executable", e);
-            throw new RuntimeException();
+            throw new ExecutableLocatorException("Error trying to locate bbc-audiowaveform executable", e);
         }
 
         setExecutablePermission(executable);
-        _executablePath = executable.getAbsolutePath();
+        this.executablePath = executable.getAbsolutePath();
     }
 
     private void setExecutablePermission(File execFile) {
@@ -68,6 +69,6 @@ public class AWFLocator implements ExecutableLocator {
 
     @Override
     public String getExecutablePath() {
-        return _executablePath;
+        return this.executablePath;
     }
 }

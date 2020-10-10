@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class BBCAudioWaveformTest {
     @Test
-    public void shouldSuccessfullyRunJSON_B_8_Sample() throws IOException {
+    void shouldSuccessfullyRunJSON_B_8_Sample() throws IOException {
         //given
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
@@ -33,7 +33,7 @@ class BBCAudioWaveformTest {
     }
 
     @Test
-    public void shouldSuccessfullyRunJSON_B_8_Z_2048_Sample() throws IOException {
+    void shouldSuccessfullyRunJSON_B_8_Z_2048_Sample() throws IOException {
         //given
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
@@ -56,7 +56,7 @@ class BBCAudioWaveformTest {
     }
 
     @Test
-    public void shouldSuccessfullyRunJSON_B_16_Sample() throws IOException {
+    void shouldSuccessfullyRunJSON_B_16_Sample() throws IOException {
         //given
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
@@ -78,7 +78,7 @@ class BBCAudioWaveformTest {
     }
 
     @Test
-    public void shouldSuccessfullyRunJSON_B_16_Z_2048_Sample() throws IOException {
+    void shouldSuccessfullyRunJSON_B_16_Z_2048_Sample() throws IOException {
         //given
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".json");
@@ -101,7 +101,7 @@ class BBCAudioWaveformTest {
     }
 
     @Test
-    public void shouldSuccessfullyRunPNG_SPLIT_W_1920_H_1080_AUTO_AUDITION() throws IOException {
+    void shouldSuccessfullyRunPNG_SPLIT_W_1920_H_1080_AUTO_AUDITION() throws IOException {
         //given
         File input = new File(getClass().getClassLoader().getResource("audio/sample_01.mp3").getFile());
         File output = File.createTempFile("awf-sample_01_summary", ".png");
