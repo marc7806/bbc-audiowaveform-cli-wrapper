@@ -5,6 +5,17 @@ A Java wrapper around the **[bbc-audiowaveform](https://github.com/bbc/audiowave
 [![Issues](https://img.shields.io/github/issues/marc7806/bbc-audiowaveform-cli-wrapper)](https://github.com/marc7806/bbc-audiowaveform-cli-wrapper/issues)
 [![Build Status](https://img.shields.io/travis/marc7806/bbc-audiowaveform-cli-wrapper)](https://travis-ci.org/github/marc7806/bbc-audiowaveform-cli-wrapper)
 [![Coverage Status](https://img.shields.io/sonar/coverage/sonarcloud-marc7806?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=sonarcloud-marc7806)
+[![Version](https://img.shields.io/maven-central/v/com.github.marc7806/audiowaveform)](https://search.maven.org/artifact/com.github.marc7806/audiowaveform/1.0/jar)
+
+## Install
+Maven:
+```xml
+<dependency>
+  <groupId>com.github.marc7806</groupId>
+  <artifactId>audiowaveform</artifactId>
+  <version>1.0</version>
+</dependency>
+```
 
 ## Usage
 ### Generate waveform data in JSON format
@@ -52,7 +63,7 @@ BBCAudioWaveForm bbcAudioWaveform = new BBCAudioWaveform("path/to/audiowaveform/
 ### System property
 You can also set the path to your bbc-audiowaveform binary via the ```AWF_PATH``` system property:
 ```
-mvn clean install -DAWF_PATH="path/to/audiowaveform/executable"
+$ mvn clean install -DAWF_PATH="path/to/audiowaveform/executable"
 ```
 With this set, you can create a new BBCAudioWaveform instance like this:
 ```java
