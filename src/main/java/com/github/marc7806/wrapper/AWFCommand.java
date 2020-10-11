@@ -24,23 +24,56 @@ import com.google.common.collect.ImmutableList;
  * @version 1.0
  */
 public class AWFCommand implements Command {
-    private ImmutableList.Builder<String> args = new ImmutableList.Builder<>();
+    private final ImmutableList.Builder<String> args = new ImmutableList.Builder<>();
+
     private File input;
     private File output;
-    private int zoom;
+    private Integer zoom;
     private AWFBit bits;
-    private boolean splitChannels;
-    private int start;
-    private int width;
-    private int height;
+    private Boolean splitChannels;
+    private Integer start;
+    private Integer width;
+    private Integer height;
     private AWFColorSchema colorSchema;
-    private boolean hideAxisLabels;
+    private Boolean hideAxisLabels;
     private String amplitudeScale;
 
     @Override
     public List<String> getArguments() {
         checkNotNull(this.input, "Input file can not be null");
         checkNotNull(this.output, "Output file can not be null");
+
+        this.args.add("-i", this.input.getAbsolutePath());
+        this.args.add("-o", this.output.getAbsolutePath());
+
+        if (this.zoom != null) {
+            this.args.add("-z", String.valueOf(this.zoom));
+        }
+        if (this.bits != null) {
+            this.args.add("-b", this.bits.getVal());
+        }
+        if (this.start != null) {
+            this.args.add("-s", String.valueOf(this.start));
+        }
+        if (this.width != null) {
+            this.args.add("-w", String.valueOf(this.width));
+        }
+        if (this.height != null) {
+            this.args.add("-h", String.valueOf(this.height));
+        }
+        if (this.colorSchema != null) {
+            this.args.add("--colors", this.colorSchema.getVal());
+        }
+        if (this.amplitudeScale != null) {
+            this.args.add("--amplitude-scale", this.amplitudeScale);
+        }
+        if (this.splitChannels != null) {
+            this.args.add("--split-channels");
+        }
+        if (this.hideAxisLabels != null) {
+            this.args.add("--no-axis-labels");
+        }
+
         return this.args.build();
     }
 
@@ -65,7 +98,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setInput(File input) {
             this.awfCommand.input = checkNotNull(input);
-            this.args.add("-i", input.getAbsolutePath());
             return this;
         }
 
@@ -79,7 +111,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setOutput(File output) {
             this.awfCommand.output = checkNotNull(output);
-            this.args.add("-o", output.getAbsolutePath());
             return this;
         }
 
@@ -92,7 +123,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder addZoom(int zoom) {
             this.awfCommand.zoom = zoom;
-            this.args.add("-z", String.valueOf(zoom));
             return this;
         }
 
@@ -105,7 +135,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setBits(AWFBit bits) {
             this.awfCommand.bits = bits;
-            this.args.add("-b", bits.getVal());
             return this;
         }
 
@@ -116,7 +145,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder splitChannels() {
             this.awfCommand.splitChannels = true;
-            this.args.add("--split-channels");
             return this;
         }
 
@@ -129,7 +157,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setStart(int start) {
             this.awfCommand.start = start;
-            this.args.add("-s", String.valueOf(start));
             return this;
         }
 
@@ -142,7 +169,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setWidth(int width) {
             this.awfCommand.width = width;
-            this.args.add("-w", String.valueOf(width));
             return this;
         }
 
@@ -155,7 +181,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setHeight(int height) {
             this.awfCommand.height = height;
-            this.args.add("-h", String.valueOf(height));
             return this;
         }
 
@@ -168,7 +193,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder setColorSchema(AWFColorSchema colorSchema) {
             this.awfCommand.colorSchema = colorSchema;
-            this.args.add("--colors", colorSchema.getVal());
             return this;
         }
 
@@ -179,7 +203,6 @@ public class AWFCommand implements Command {
          */
         public AWFCommandBuilder hideAxisLabels() {
             this.awfCommand.hideAxisLabels = true;
-            this.args.add("--no-axis-labels");
             return this;
         }
 
@@ -194,12 +217,10 @@ public class AWFCommand implements Command {
         public AWFCommandBuilder setAmplitudeScale(String amplitudeScale) {
             checkArgument(!amplitudeScale.isEmpty(), "Amplitude scale value can not be empty");
             this.awfCommand.amplitudeScale = amplitudeScale;
-            this.args.add("--amplitude-scale", amplitudeScale);
             return this;
         }
 
         public AWFCommand build() {
-            this.awfCommand.args = args;
             return awfCommand;
         }
     }
