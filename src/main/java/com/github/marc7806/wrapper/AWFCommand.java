@@ -85,7 +85,6 @@ public class AWFCommand implements Command {
     }
 
     public static class AWFCommandBuilder {
-        private final ImmutableList.Builder<String> args = new ImmutableList.Builder<>();
         private final AWFCommand awfCommand = new AWFCommand();
 
         /**
