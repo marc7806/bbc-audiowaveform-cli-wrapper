@@ -1,0 +1,49 @@
+version: 2.1
+orbs:
+  maven: circleci/maven@1.2.0
+executors:
+  machine-executor:
+    machine:
+      image: ubuntu-2004:202101-01
+jobs:
+  build:
+    executor: machine-executor
+    steps:
+      - checkout
+      - restore_cache:
+          key: maven-{{ checksum "/tmp/maven_cache_seed" }}
+      - run:
+          name: Install OpenJDK 11
+          command: |
+            sudo apt-get install openjdk-11-jre
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+            java -version
+      - run:
+          name: Install Audiowaveform
+          command: |
+            sudo add-apt-repository -y ppa:chris-needham/ppa
+            sudo apt-get -q update
+            sudo apt-get -y install audiowaveform
+            audiowaveform --version
+      - run:
+          name: Run maven
+          command: |
+            ./mvnw verify sonar:sonar -Pcoverage -Dsonar.login=${SONAR_TOKEN} -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=sonarcloud-marc7806 -Dsonar.organization=sonarcloud-marc7806 -DAWF_PATH=/usr/bin/audiowaveform
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+      - store_artifacts:
+          path: ~/test-results/junit
+      - save_cache:
+          key: maven-{{ checksum "/tmp/maven_cache_seed" }}
+          paths:
+            - ~/.m2/repository
+workflows:
+  circleci:
+    jobs:
+      - build
