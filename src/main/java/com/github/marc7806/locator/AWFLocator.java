@@ -51,7 +51,6 @@ public class AWFLocator implements ExecutableLocator {
                 throw new FileNotFoundException("The file from the provided environment file path does not exist. Have you provided the correct file path?");
             }
         } catch (Exception e) {
-            log.error("Error trying to locate bbc-audiowaveform executable", e);
             throw new ExecutableLocatorException("Error trying to locate bbc-audiowaveform executable", e);
         }
 
@@ -60,10 +59,8 @@ public class AWFLocator implements ExecutableLocator {
     }
 
     private void setExecutablePermission(File execFile) {
-        if (!execFile.canExecute()) {
-            if (!execFile.setExecutable(true)) {
-                log.error("Cannot set execute permission on bbc-audiowaveform executable.");
-            }
+        if (!execFile.canExecute() && !execFile.setExecutable(true)) {
+            log.error("Cannot set execute permission on bbc-audiowaveform executable.");
         }
     }
 
