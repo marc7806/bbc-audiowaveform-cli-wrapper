@@ -3,7 +3,7 @@ A Java wrapper around the **[bbc-audiowaveform](https://github.com/bbc/audiowave
 
 ![Java](https://img.shields.io/badge/Java-11+-brightgreen.svg)
 [![Issues](https://img.shields.io/github/issues/marc7806/bbc-audiowaveform-cli-wrapper)](https://github.com/marc7806/bbc-audiowaveform-cli-wrapper/issues)
-[![Build Status](https://img.shields.io/travis/marc7806/bbc-audiowaveform-cli-wrapper)](https://travis-ci.org/github/marc7806/bbc-audiowaveform-cli-wrapper)
+[![CircleCI](https://circleci.com/gh/marc7806/bbc-audiowaveform-cli-wrapper/tree/main.svg?style=shield)](https://circleci.com/gh/marc7806/bbc-audiowaveform-cli-wrapper/tree/main)
 [![Coverage Status](https://img.shields.io/sonar/coverage/sonarcloud-marc7806?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/dashboard?id=sonarcloud-marc7806)
 [![Version](https://img.shields.io/maven-central/v/com.github.marc7806/audiowaveform)](https://search.maven.org/artifact/com.github.marc7806/audiowaveform/1.1/jar)
 
