@@ -45,10 +45,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <guava.version>30.1.1-jre</guava.version>
-        <slf4j-api.version>2.0.0-alpha5</slf4j-api.version>
-        <junit-jupiter-api.version>5.8.0-RC1</junit-jupiter-api.version>
-        <mockito.version>3.12.4</mockito.version>
+        <guava.version>31.1-jre</guava.version>
+        <slf4j-api.version>2.0.0-alpha7</slf4j-api.version>
+        <junit-jupiter-api.version>5.9.0-M1</junit-jupiter-api.version>
+        <mockito.version>4.6.1</mockito.version>
     </properties>
 
     <dependencies>
