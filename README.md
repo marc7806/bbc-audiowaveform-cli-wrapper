@@ -13,7 +13,7 @@ Maven:
 <dependency>
   <groupId>com.github.marc7806</groupId>
   <artifactId>audiowaveform</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
 </dependency>
 ```
 
